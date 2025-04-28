@@ -6,7 +6,7 @@ import DisplayTechIcons from "@/components/DisplayTechIcons";
 import Agent from "@/components/Agent";
 import {getCurrentUser} from "@/lib/actions/auth.action";
 
-const InterviewDetails = async ({ params}: RouteParams) => {
+const InterviewDetails = async ({ params }: RouteParams) => {
     const { id } = await params;
     const user = await getCurrentUser();
     const interview = await getInterviewById(id);
@@ -16,7 +16,7 @@ const InterviewDetails = async ({ params}: RouteParams) => {
     const feedback = await getFeedbackByInterviewId({
         interviewId: id,
         userId: user?.id!,
-    })
+    });
 
     return (
         <>
@@ -25,7 +25,7 @@ const InterviewDetails = async ({ params}: RouteParams) => {
                     <div className="flex flex-row gap-4 items-center">
                         <Image src={getRandomInterviewCover()} alt="cover-image" width={40} height={40}
                                className="rounded-full object-cover size-[40px]"/>
-                     
+
                         <h3 className="capitalize">{interview.role} Interview</h3>
                     </div>
             <DisplayTechIcons techStack={interview.techstack} />

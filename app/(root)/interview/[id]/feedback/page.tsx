@@ -4,6 +4,7 @@ import {redirect} from "next/navigation";
 import dayjs from "dayjs";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 const Feedback = async ({ params }: RouteParams) => {
     const {id} = await params;

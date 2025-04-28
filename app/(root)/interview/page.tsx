@@ -14,6 +14,6 @@ const Page = async () => {
                type="generate"
            />
        </>
-    )
-}
+    );
+};
 export default Page
