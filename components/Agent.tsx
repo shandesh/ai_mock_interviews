@@ -69,22 +69,6 @@ const Agent = ({userName, userId, type, feedbackId, interviewId, questions}: Age
         }
     }, [])
 
-    useEffect(() => {
-        // This now lives in the browser
-        async function askMic() {
-            try {
-                await navigator.mediaDevices.getUserMedia({ audio: true });
-                // start your recording/listening logic…
-            } catch (e) {
-                console.error('Microphone access denied', e);
-            }
-        }
-
-        // DON’T call this on mount—the browser will block it.
-        // Instead wire it up to a button below.
-
-    }, []);
-
 
     const handleGenerateFeedback = async (messages: SavedMessage[]) => {
         console.log('Generating feedback here.');
@@ -119,6 +103,8 @@ const Agent = ({userName, userId, type, feedbackId, interviewId, questions}: Age
 
     const handleCall = async () => {
         setCallStatus(CallStatus.CONNECTING);
+        console.log("⛓ workflow:", process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID);
+
 
         if(type === 'generate') {
 
